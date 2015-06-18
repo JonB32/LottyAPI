@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottoAPI", "LottoAPI\LottoAPI.csproj", "{625823DF-FC74-46B9-9FFD-D6858DE37A6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottoAPI.Tests", "LottoAPI.Tests\LottoAPI.Tests.csproj", "{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{625823DF-FC74-46B9-9FFD-D6858DE37A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625823DF-FC74-46B9-9FFD-D6858DE37A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625823DF-FC74-46B9-9FFD-D6858DE37A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625823DF-FC74-46B9-9FFD-D6858DE37A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
