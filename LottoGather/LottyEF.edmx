@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LottyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Powerball_Numbers">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="N1" Type="int" Nullable="false" />
+          <Property Name="N2" Type="int" Nullable="false" />
+          <Property Name="N3" Type="int" Nullable="false" />
+          <Property Name="N4" Type="int" Nullable="false" />
+          <Property Name="N5" Type="int" Nullable="false" />
+          <Property Name="PB" Type="int" Nullable="false" />
+          <Property Name="PP" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="LottyDBModelStoreContainer">
+          <EntitySet Name="Powerball_Numbers" EntityType="Self.Powerball_Numbers" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LottyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Powerball_Numbers">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="N1" Type="Int32" Nullable="false" />
+          <Property Name="N2" Type="Int32" Nullable="false" />
+          <Property Name="N3" Type="Int32" Nullable="false" />
+          <Property Name="N4" Type="Int32" Nullable="false" />
+          <Property Name="N5" Type="Int32" Nullable="false" />
+          <Property Name="PB" Type="Int32" Nullable="false" />
+          <Property Name="PP" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="LottyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Powerball_Numbers" EntityType="Self.Powerball_Numbers" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LottyDBModelStoreContainer" CdmEntityContainer="LottyDBEntities">
+          <EntitySetMapping Name="Powerball_Numbers">
+            <EntityTypeMapping TypeName="LottyDBModel.Powerball_Numbers">
+              <MappingFragment StoreEntitySet="Powerball_Numbers">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="N1" ColumnName="N1" />
+                <ScalarProperty Name="N2" ColumnName="N2" />
+                <ScalarProperty Name="N3" ColumnName="N3" />
+                <ScalarProperty Name="N4" ColumnName="N4" />
+                <ScalarProperty Name="N5" ColumnName="N5" />
+                <ScalarProperty Name="PB" ColumnName="PB" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

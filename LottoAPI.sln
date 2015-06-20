@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottoAPI", "LottoAPI\LottoA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottoAPI.Tests", "LottoAPI.Tests\LottoAPI.Tests.csproj", "{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottoGather", "LottoGather\LottoGather.csproj", "{23AD1F74-3DB1-458C-AAC4-1CBEDAE1B588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LottoGather.Tests", "LottoGatherTests\LottoGather.Tests.csproj", "{B1BC590E-BD81-46DE-B9FE-BEF9DCB525C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B6B59B4-18ED-4D78-9DFC-BE922697F23E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23AD1F74-3DB1-458C-AAC4-1CBEDAE1B588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23AD1F74-3DB1-458C-AAC4-1CBEDAE1B588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23AD1F74-3DB1-458C-AAC4-1CBEDAE1B588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23AD1F74-3DB1-458C-AAC4-1CBEDAE1B588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BC590E-BD81-46DE-B9FE-BEF9DCB525C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BC590E-BD81-46DE-B9FE-BEF9DCB525C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BC590E-BD81-46DE-B9FE-BEF9DCB525C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BC590E-BD81-46DE-B9FE-BEF9DCB525C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
