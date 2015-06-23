@@ -65,6 +65,7 @@ namespace LottoGather
                      *   Draw Date   WB1 WB2 WB3 WB4 WB5 PB  PP
                      *   06/13/2015  41  29  52  54  48  29  2
                     */
+                    int powerPlay = 0;
                     String[] lineS = Regex.Split(line, @"\s+");
                     Powerball_Numbers powerBallDO = new Powerball_Numbers();
                     powerBallDO.Date = DateTime.Parse(lineS[0]);
@@ -74,8 +75,12 @@ namespace LottoGather
                     powerBallDO.N4 = Int32.Parse(lineS[4]);
                     powerBallDO.N5 = Int32.Parse(lineS[5]);
                     powerBallDO.PB = Int32.Parse(lineS[6]);
-                    powerBallDO.PP = Int32.Parse(lineS[7]);
+                    if (Int32.TryParse(lineS[7], out powerPlay))
+                    {
+                        powerBallDO.PP = powerPlay;
+                    }
                     contextPB.Add(powerBallDO);
+
                 }//while
                 lottyContext.SaveChanges();
             }
@@ -116,9 +121,10 @@ namespace LottoGather
                 String[] lineS = Regex.Split(line, @"\s+");
                 DateTime drawDate = DateTime.Parse(lineS[0]);
 
-                //check if drawing is already in table by checking draw date, if not (null) insert new record
-                if (contextPB.Where(w => w.Date == drawDate).Select(s => s.Date).First() == null)
+                //check if drawing is already in table by checking draw date, if not (default) insert new record
+                if (contextPB.Where(w => w.Date == drawDate).Select(s => s.Date).FirstOrDefault() == DateTime.MinValue)
                 {
+                    int powerPlay = 0;
                     Powerball_Numbers powerBallDO = new Powerball_Numbers();
                     powerBallDO.Date = drawDate;
                     powerBallDO.N1 = Int32.Parse(lineS[1]);
@@ -127,7 +133,10 @@ namespace LottoGather
                     powerBallDO.N4 = Int32.Parse(lineS[4]);
                     powerBallDO.N5 = Int32.Parse(lineS[5]);
                     powerBallDO.PB = Int32.Parse(lineS[6]);
-                    powerBallDO.PP = Int32.Parse(lineS[7]);
+                    if (Int32.TryParse(lineS[7], out powerPlay))
+                    {
+                        powerBallDO.PP = powerPlay;
+                    }
                     contextPB.Add(powerBallDO);
                     lottyContext.SaveChanges();
                 }

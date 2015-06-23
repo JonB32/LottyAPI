@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LottyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LottyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Powerball_Numbers">
           <Key>
             <PropertyRef Name="Date" />
@@ -16,13 +16,12 @@
           <Property Name="N4" Type="int" Nullable="false" />
           <Property Name="N5" Type="int" Nullable="false" />
           <Property Name="PB" Type="int" Nullable="false" />
-          <Property Name="PP" Type="int" Nullable="false" />
+          <Property Name="PP" Type="int" />
         </EntityType>
         <EntityContainer Name="LottyDBModelStoreContainer">
           <EntitySet Name="Powerball_Numbers" EntityType="Self.Powerball_Numbers" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LottyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -37,7 +36,7 @@
           <Property Name="N4" Type="Int32" Nullable="false" />
           <Property Name="N5" Type="Int32" Nullable="false" />
           <Property Name="PB" Type="Int32" Nullable="false" />
-          <Property Name="PP" Type="Int32" Nullable="false" />
+          <Property Name="PP" Type="Int32" />
         </EntityType>
         <EntityContainer Name="LottyDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Powerball_Numbers" EntityType="Self.Powerball_Numbers" />

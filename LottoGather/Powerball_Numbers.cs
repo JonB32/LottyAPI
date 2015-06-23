@@ -21,6 +21,6 @@ namespace LottoGather
         public int N4 { get; set; }
         public int N5 { get; set; }
         public int PB { get; set; }
-        public int PP { get; set; }
+        public Nullable<int> PP { get; set; }
     }
 }
