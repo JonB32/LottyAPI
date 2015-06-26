@@ -11,7 +11,7 @@ namespace LottoAPI
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{SODA_RESOURCE}.axd/{*pathInfo}");
 
             routes.MapRoute(
                 name: "Default",

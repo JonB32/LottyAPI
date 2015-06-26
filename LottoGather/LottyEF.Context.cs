@@ -26,5 +26,6 @@ namespace LottoGather
         }
     
         public virtual DbSet<Powerball_Numbers> Powerball_Numbers { get; set; }
+        public virtual DbSet<MegaMillions_Numbers> MegaMillions_Numbers { get; set; }
     }
 }

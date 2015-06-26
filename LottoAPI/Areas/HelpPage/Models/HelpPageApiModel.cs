@@ -54,12 +54,12 @@ namespace LottoAPI.Areas.HelpPage.Models
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="ModelDescription"/> that describes the resource.
+        /// Gets or sets the <see cref="ModelDescription"/> that describes the SODA_RESOURCE.
         /// </summary>
         public ModelDescription ResourceDescription { get; set; }
 
         /// <summary>
-        /// Gets the resource property descriptions.
+        /// Gets the SODA_RESOURCE property descriptions.
         /// </summary>
         public IList<ParameterDescription> ResourceProperties
         {
