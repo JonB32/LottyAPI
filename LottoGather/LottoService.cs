@@ -121,24 +121,27 @@ namespace LottoGather
 
                 //ignore first(header) line
                 String line = reader.ReadLine();
-                line = reader.ReadLine();
-
-#if DEBUG
-                Debug.WriteLine(line);
-#endif
-                /* 6/19/2015 data currently gathered for powerball from
-                     * http://www.powerball.com/powerball/winnums-text.txt where
-                     * the format is as follows:
-                     *   lines[0]    [1] [2] [3] [4] [5] [6] [7]
-                     *   Draw Date   WB1 WB2 WB3 WB4 WB5 PB  PP
-                     *   06/13/2015  41  29  52  54  48  29  2
-                    */
-                String[] lineS = Regex.Split(line, @"\s+");
-                DateTime drawDate = DateTime.Parse(lineS[0]);
-
-                //check if drawing is already in table by checking draw date, if not (default) insert new record
-                if (contextPB.Where(w => w.Date == drawDate).Select(s => s.Date).FirstOrDefault() == DateTime.MinValue)
+                while ((line = reader.ReadLine()) != null)
                 {
+
+                    /* 6/19/2015 data currently gathered for powerball from
+                         * http://www.powerball.com/powerball/winnums-text.txt where
+                         * the format is as follows:
+                         *   lines[0]    [1] [2] [3] [4] [5] [6] [7]
+                         *   Draw Date   WB1 WB2 WB3 WB4 WB5 PB  PP
+                         *   06/13/2015  41  29  52  54  48  29  2
+                        */
+                    String[] lineS = Regex.Split(line, @"\s+");
+                    DateTime drawDate = DateTime.Parse(lineS[0]);
+
+                    //check if drawing is already in table by checking draw date, if not (default) insert new record
+                    if (contextPB.Where(w => w.Date == drawDate).Select(s => s.Date).FirstOrDefault() != DateTime.MinValue)
+                    {
+                        break;
+                    }
+#if DEBUG
+                    Debug.WriteLine(line);
+#endif
                     int powerPlay = 0;
                     Powerball_Numbers powerBallDO = new Powerball_Numbers();
                     powerBallDO.Date = drawDate;
@@ -153,8 +156,9 @@ namespace LottoGather
                         powerBallDO.PP = powerPlay;
                     }
                     contextPB.Add(powerBallDO);
-                    lottyContext.SaveChanges();
+                    line = reader.ReadLine();
                 }
+                lottyContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -242,30 +246,36 @@ namespace LottoGather
                 //get a reference to the SODA_RESOURCE itself
                 //the result (a Resouce object) is a generic type
                 //the type parameter represents the underlying rows of the SODA_RESOURCE
-                //of course, a custom type can be used as long as it is JSON serializable
+                //of course,  a custom type can be used as long as it is JSON serializable
                 var dataset = client.GetResource<MegaMillionsModel>(SODA_RESOURCE);
 
                 //query to get latest drawing from table
-                var soql = new SoqlQuery().Select("*").Order(SoqlOrderDirection.DESC).Limit(1);
+                var soql = new SoqlQuery().Select("*").Order(SoqlOrderDirection.DESC).Limit(5000);
 
                 //Resource objects read their own data
-                var row = dataset.Query(soql).First();
+                var allRows = dataset.Query(soql);
 
-#if DEBUG
-                Debug.WriteLine(JObject.FromObject(row).ToString(Formatting.None));
-#endif
-                /* 6/19/2015 data currently gathered for powerball from
+                //var allRows = dataset.GetRows(5000);
+
+                foreach (var row in allRows)
+                {
+                    /* 6/19/2015 data currently gathered for powerball from
                     * https://data.ny.gov/SODA_RESOURCE/5xaw-6ayf.json where
                     * the format is as follows:
                     *   Draw Date   Winning Numbers MB  MN
                     *   06/13/2015  41 29 52 54 48  29  2
-                */
-                String[] winningNumbers = Regex.Split(row.Numbers, @"\s+");
-                DateTime drawDate = row.Date;
+                    */
+                    String[] winningNumbers = Regex.Split(row.Numbers, @"\s+");
+                    DateTime drawDate = row.Date;
 
-                //check if drawing is already in table by checking draw date, if not (default) insert new record
-                if (contextMM.Where(w => w.Date == drawDate).Select(s => s.Date).FirstOrDefault() == DateTime.MinValue)
-                {
+                    //check if drawing is already in table by checking draw date, if not (default) insert new record
+                    if (contextMM.Where(w => w.Date == drawDate).Select(s => s.Date).FirstOrDefault() != DateTime.MinValue)
+                    {
+                        break;
+                    }
+#if DEBUG
+                    Debug.WriteLine(JObject.FromObject(row).ToString(Formatting.None));
+#endif
                     MegaMillions_Numbers megaMillionsDO = new MegaMillions_Numbers();
                     megaMillionsDO.Date = row.Date;
                     megaMillionsDO.N1 = Int32.Parse(winningNumbers[0]);
@@ -275,10 +285,11 @@ namespace LottoGather
                     megaMillionsDO.N5 = Int32.Parse(winningNumbers[4]);
                     megaMillionsDO.MB = row.MB;
                     megaMillionsDO.MN = row.MN;
+
                     contextMM.Add(megaMillionsDO);
-                    lottyContext.SaveChanges();
                 }
 
+                lottyContext.SaveChanges();
             }
             catch (Exception ex)
             {
